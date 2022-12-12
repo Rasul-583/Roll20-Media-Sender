@@ -7,7 +7,6 @@
         
     },
     
-    "default_locale": "en",
     "description": "A plain text description",
     "icons": {
       "48": "/assets/icons/icon48.png",
