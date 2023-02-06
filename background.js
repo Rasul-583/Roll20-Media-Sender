@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener( () => {
     chrome.contextMenus.create({
       id: 'sender',
       title: "test title", 
-      contexts:[ "selection" ]
+      contexts:[ "selection", "link", "image", "video" ]
     });
   });
   
