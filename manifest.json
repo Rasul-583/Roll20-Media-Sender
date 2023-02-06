@@ -19,7 +19,8 @@
 
     "permissions": [
       "contextMenus",
-      "notifications"
+      "notifications",
+      "storage"
     ],
 
     "background": {
