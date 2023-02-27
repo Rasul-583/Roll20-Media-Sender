@@ -6,9 +6,21 @@ chrome.runtime.onInstalled.addListener( () => {
     });
   });
   
-  chrome.contextMenus.onClicked.addListener( ( info, tab ) => {
+  chrome.contextMenus.onClicked.addListener( async ( info, tab ) => {
     if ( 'sender' === info.menuItemId ) {
-      sample( info.selectionText );
+      try {
+        const imgURL = '/images/generic/file.png';
+        const data = await fetch(imgURL);
+        const blob = await data.blob();
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            [blob.type]: blob
+          })
+        ]);
+        console.log('Image copied.');
+      } catch (err) {
+        console.error(err.name, err.message);
+      }
     }
   } );
   
