@@ -1,10 +1,11 @@
-chrome.runtime.onMessage.addListener( data => {
-  if ( data.type === 'notification' ) {
-    CBC( data.message );
+chrome.runtime.onMessage.addListener( data => { // add a listener for incoming messages from the extension
+  if ( data.type === 'notification' ) { // if the incoming message has a type of "notification"
+    CBC( data.message ); // call a function CBC with the message from the data object as its argument
   }
 });
 
-chrome.runtime.onInstalled.addListener( () => {
+
+chrome.runtime.onInstalled.addListener( () => { //code for context menu
   chrome.contextMenus.create({
     id: 'CBC',
     title: "Create Beyond20 Command", 
@@ -12,13 +13,14 @@ chrome.runtime.onInstalled.addListener( () => {
   });
 });
 
-chrome.contextMenus.onClicked.addListener( ( info, tab ) => {
+
+chrome.contextMenus.onClicked.addListener( ( info, tab ) => {//code for when context menu is pressed
   if ( 'CBC' === info.menuItemId ) {
-    CBC( info.selectionText || info.linkUrl || info.srcUrl);
+    CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
   }
 } );
 
-const CBC = message => {
+const CBC = message => { //code for notification system
   return chrome.notifications.create(
     '',
     {
