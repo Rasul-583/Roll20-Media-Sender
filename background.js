@@ -24,7 +24,7 @@ const notify = message => {
     {
       type: 'basic',
       title: 'Command Created',
-      message: message || 'test',
+      message: message || '???',
       iconUrl: './assets/icons/128.png',
     }
   );
