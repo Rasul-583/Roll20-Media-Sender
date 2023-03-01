@@ -24,7 +24,7 @@ const notify = message => {
     {
       type: 'basic',
       title: 'Command Created',
-      message: message || '???',
+      message: '[[after]]'+' [name]'+'('+message+')[[/after]]' || 'WIP, please select plain text',
       iconUrl: './assets/icons/128.png',
     }
   );
