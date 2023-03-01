@@ -17,6 +17,7 @@ chrome.runtime.onInstalled.addListener( () => { //code for context menu
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {//code for when context menu is pressed
   if ( 'CBC' === info.menuItemId ) {
     CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
+    navigator.clipboard.writeText('Text to copy');
   }
 } );
 
