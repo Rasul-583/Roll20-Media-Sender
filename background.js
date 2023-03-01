@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener( data => {
   if ( data.type === 'notification' ) {
-    notify( data.message );
+    CBC( data.message );
   }
 });
 
@@ -14,17 +14,17 @@ chrome.runtime.onInstalled.addListener( () => {
 
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {
   if ( 'CBC' === info.menuItemId ) {
-    notify( info.selectionText );
+    CBC( info.selectionText || info.linkUrl || info.srcUrl);
   }
 } );
 
-const notify = message => {
+const CBC = message => {
   return chrome.notifications.create(
     '',
     {
       type: 'basic',
       title: 'Command Created',
-      message: '[[after]]'+' [name]'+'('+message+')[[/after]]' || 'WIP, please select plain text',
+      message: '[[after]]'+' [name]'+'('+message+')[[/after]]' || 'error',
       iconUrl: './assets/icons/128.png',
     }
   );
