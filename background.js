@@ -6,14 +6,14 @@ chrome.runtime.onMessage.addListener( data => {
 
 chrome.runtime.onInstalled.addListener( () => {
   chrome.contextMenus.create({
-    id: 'notify',
-    title: "Notify!: %s", 
-    contexts:[ "selection" ]
+    id: 'CBC',
+    title: "Create Beyond20 Command", 
+    contexts:[ "selection", "link", "image", "video" ]
   });
 });
 
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {
-  if ( 'notify' === info.menuItemId ) {
+  if ( 'CBC' === info.menuItemId ) {
     notify( info.selectionText );
   }
 } );
@@ -23,8 +23,8 @@ const notify = message => {
     '',
     {
       type: 'basic',
-      title: 'Notify!',
-      message: message || 'Notify!',
+      title: 'Command Created',
+      message: message || 'test',
       iconUrl: './assets/icons/128.png',
     }
   );
