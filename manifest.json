@@ -21,7 +21,8 @@
       "contextMenus",
       "notifications",
       "storage",
-      "clipboardWrite"
+      "clipboardWrite",
+      "clipboardRead"
     ],
 
     "background": {
