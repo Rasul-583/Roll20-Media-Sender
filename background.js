@@ -17,13 +17,15 @@ chrome.runtime.onInstalled.addListener( () => { //code for context menu
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {//code for when context menu is pressed
   if ( 'CBC' === info.menuItemId ) {
     CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
-    console.log('Copying to clipboard...');
+    navigator.clipboard.writeText( '[[after]]'+' [name]'+'('+info.selectionText+')[[/after]]'
+    || '[[after]]'+' [name]'+'('+info.linkUrl+')[[/after]]'
+    || '[[after]]'+' [name]'+'('+info.srcUrl+')[[/after]]' || 'error');
   }
 } );
 
 
-const CBC = message => { //code for notification system
-  return chrome.notifications.create(
+const CBC = message => { 
+  return chrome.notifications.create( //code for notification system
     '',
     {
       type: 'basic',
