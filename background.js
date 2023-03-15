@@ -14,12 +14,44 @@ chrome.runtime.onInstalled.addListener( () => { //code for context menu
 });
 
 
+const button = document.querySelector("#menu");
+button.addEventListener("click", function() {
+  const selectedButton = button.textContent;
+  myFunction(selectedButton);
+});
+
+
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {//code for when context menu is pressed
   if ( 'CBC' === info.menuItemId ) {
+    if (selectedButton === "before"){
+      CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
+      navigator.clipboard.writeText( '[[before]]'+' [name]'+'('+info.selectionText+')[[/before]]'
+      || '[[before]]'+' [name]'+'('+info.linkUrl+')[[/before]]'
+      || '[[before]]'+' [name]'+'('+info.srcUrl+')[[/before]]' || 'error');
+    }
+    else if (selectedButton === "after"){
     CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
     navigator.clipboard.writeText( '[[after]]'+' [name]'+'('+info.selectionText+')[[/after]]'
     || '[[after]]'+' [name]'+'('+info.linkUrl+')[[/after]]'
     || '[[after]]'+' [name]'+'('+info.srcUrl+')[[/after]]' || 'error');
+    }
+    else if (selectedButton === "replace"){
+      CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
+      navigator.clipboard.writeText( '[[replace]]'+' [name]'+'('+info.selectionText+')[[/replace]]'
+      || '[[replace]]'+' [name]'+'('+info.linkUrl+')[[/replace]]'
+      || '[[replace]]'+' [name]'+'('+info.srcUrl+')[[/replace]]' || 'error');
+    }
+    else{
+      return chrome.notifications.create( //code for notification system
+      '',
+      {
+        type: 'basic',
+        title: 'Error: No option selected!',
+        message: 'Please select an option in the extension menu!',
+        iconUrl: './assets/icons/128.png',
+      }
+    );
+    }
   }
 } );
 

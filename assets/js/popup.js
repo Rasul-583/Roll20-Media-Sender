@@ -1,16 +1,16 @@
     // Get the button and dropdown content elements
-    const button = document.querySelector("menu");
+    const button = document.querySelector("#menu");
     const options = document.querySelectorAll(".dropdown-content a");
-options.forEach((option) => {
-  option.addEventListener("click", (event) => {
+    options.forEach((option) => {
+    option.addEventListener("click", (event) => {
     event.preventDefault();
     
     if (option.id === "before") {
-        button.textContent = event.target.textContent;
+        button.textContent = "Currently Selected Mode: 'before'";
     } else if (option.id === "after") {
-      // do something if "After" is clicked
+        button.textContent = "Currently Selected Mode: 'after'";
     } else if (option.id === "replace") {
-      // do something if "Replace" is clicked
+        button.textContent = "Currently Selected Mode: 'replace'";
     }
   });
 });
