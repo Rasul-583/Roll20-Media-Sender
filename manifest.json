@@ -11,7 +11,7 @@
       }
     },
     
-    "description": "A plain text description",
+    "description": "A extension that help you create commands for the Beyond20 extension.",
     "icons": {
       "48": "/assets/icons/48.png",
       "128": "/assets/icons/128.png"
