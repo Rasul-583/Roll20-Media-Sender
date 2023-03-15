@@ -20,7 +20,8 @@
     "permissions": [
       "contextMenus",
       "notifications",
-      "clipboardWrite"
+      "clipboardWrite",
+      "storage"
     ],
 
     "background": {
