@@ -14,11 +14,11 @@ chrome.runtime.onInstalled.addListener( () => { //code for context menu
 });
 
 
-const button = document.querySelector("#menu");
+/*const button = document.querySelector("#menu");
 button.addEventListener("click", function() {
   const selectedButton = button.textContent;
   myFunction(selectedButton);
-});
+});*/
 
 
 chrome.contextMenus.onClicked.addListener( ( info, tab ) => {//code for when context menu is pressed
