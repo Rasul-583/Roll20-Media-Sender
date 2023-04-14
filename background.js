@@ -16,11 +16,21 @@ chrome.runtime.onInstalled.addListener( () => { //code for context menu
 
 chrome.contextMenus.onClicked.addListener( async ( info, tab ) => {//code for when context menu is pressed
   if ( 'CBC' === info.menuItemId ) {
-    CBC( info.selectionText || info.linkUrl || info.srcUrl || 'error');
-    const textToCopy = '[[after]]'+' [name]'+'('+info.selectionText+')[[/after]]'
-    || '[[after]]'+' [name]'+'('+info.linkUrl+')[[/after]]'
-    || '[[after]]'+' [name]'+'('+info.srcUrl+')[[/after]]' || 'error';
+    let textToCopy = '[[after]]';
+    if (info.selectionText) { //if the contect menu is used on text
+      textToCopy += ' [name](' + info.selectionText + ')'; 
+    } else if (info.linkUrl) { //if the contect menu is used on a link
+      textToCopy += ' [name](' + info.linkUrl + ')';
+    } else if (info.srcUrl) { //if the contect menu is used on an image
+      textToCopy += ' [name](' + info.srcUrl + ')';
+    } else {
+      textToCopy += ' error';
+    }
+    
+    textToCopy += '[[/after]]';
+    
     await addToClipboard(textToCopy);
+    CBC(textToCopy);
   }
 } );
 
@@ -31,7 +41,7 @@ async function addToClipboard(value) {
     justification: 'Write text to the clipboard.'
   });
 
-  // Now that we have an offscreen document, we can dispatch the message.
+  // now that we have an offscreen document, we can dispatch the message.
   chrome.runtime.sendMessage({
     type: 'copy-data-to-clipboard',
     target: 'offscreen-doc',
@@ -40,13 +50,13 @@ async function addToClipboard(value) {
 }
 
 
-const CBC = message => { 
-  return chrome.notifications.create( //code for notification system
+const CBC = textToCopy => { 
+  return chrome.notifications.create(
     '',
     {
       type: 'basic',
       title: 'Command Created',
-      message: '[[after]]'+' [name]'+'('+message+')[[/after]]' || 'error',
+      message: textToCopy || 'error',
       iconUrl: './assets/icons/128.png',
     }
   );
