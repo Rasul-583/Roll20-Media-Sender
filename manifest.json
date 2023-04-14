@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Roll20 Media Sender",
-    "version": "1.12",
+    "version": "2.0",
   
     "action": {
       "default_popup": "popup.html",
@@ -20,6 +20,7 @@
     "permissions": [
       "contextMenus",
       "notifications",
+      "offscreen",
       "clipboardWrite"
     ],
 
