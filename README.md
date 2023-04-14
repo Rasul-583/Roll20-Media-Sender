@@ -22,8 +22,7 @@ The final command would look something like this: {{msg-type}} {name}([www.link-
 Typing this command is quite confusing and time consuming, this extension makes things simpler.
 
 How to use:
-1.	Choose your message type in the popup menu of the extension, “after”, “before” or “replace”.
-2.	Right click an image, gif, video, link, or highlighted text and click the “Create Beyond20 Command” option in the context menu
-3.	You should receive a notification telling you if the command creation was successful. The command will automatically be copied to your clipboard as well.
-4.	Add the command to whichever spell, attack, item, etc. you would like to in the “notes” or “description” part.
-5.	Whenever you cast the spell or make the attack or display the item in the VTT, you should now see it appear in the roll20 chat. Enjoy!
+1.	Right click an image, gif, video, link, or highlighted text and click the “Create Beyond20 Command” option in the context menu
+2.	You should receive a notification telling you if the command creation was successful. The command will automatically be copied to your clipboard as well.
+3.	Add the command to whichever spell, attack, item, etc. you would like to in the “notes” or “description” part.
+4.	Whenever you cast the spell or make the attack or display the item in the VTT, you should now see it appear in the roll20 chat. Enjoy!
