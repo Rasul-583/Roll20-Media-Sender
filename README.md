@@ -4,6 +4,8 @@ A chrome extension for sending media on roll20 trough beyond20.
 This is an extension that let's you more easily make commands in DND Beyond to send media such as gifs or images.
 The beyond20 extension is required if you want the commands to have functionality (https://chrome.google.com/webstore/detail/beyond-20/gnblbpbepfbfmoobegdogkglpbhcjofh)
 
+Made by yours truly, Rasul583. Contact me at rasul.abdullayev583@gmail.com for any feedback and such.
+
 How it works:
 
 In roll20, you can embed media files such as gifs and images by using a command in the following format: {name}(www.link-ending-in.gif/png/jpeg/etc.) (Github makes anything within brackets into a hyperlink so you would normally use regular brackets "[" not curly ones. This applies to all sample commands in this file, imagine that all the curly brackets are normal ones). 
